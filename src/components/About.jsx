@@ -41,7 +41,7 @@ const About = () => {
       <p className={styles.sectionSubText}>Introduction</p>
       <h2 className={styles.sectionHeadText}>Overview.</h2>
     </motion.div>
-    <motion.p
+    {/* <motion.p
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
@@ -50,12 +50,12 @@ const About = () => {
         Three.js. I am a quick learner and kindly collaborate with clients and colleagues to
         create efficient, scalable, and easy-to-use solutions that solve
         real world problems. Let's work together to bring your ideas to life!
-      </motion.p>
-      <div className='mt-20 flex flex-wrap gap-20' >
+      </motion.p> */}
+      {/* <div className='mt-20 flex flex-wrap gap-20' >
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}
-      </div>
+      </div> */}
     </>
   )
 }

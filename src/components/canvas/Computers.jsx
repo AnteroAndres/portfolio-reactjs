@@ -1,76 +1,54 @@
-import React, { Suspense, useEffect, useState } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
+import React from "react";
 
-import CanvasLoader from "../Loader";
-
-const Computers = ({ isMobile }) => {
-  const computer = useGLTF('./desktop_pc/scene.gltf');
-
-  return (
-    <mesh>
-       <hemisphereLight intensity={0.75} groundColor='black' />
-       <spotLight
-        position={[-20, 50, 10]}
-        angle={0.12}
-        penumbra={1}
-        intensity={1}
-        castShadow
-        shadow-mapSize={1024}
-      />
-      <pointLight intensity={1} />
-      <primitive
-        object={computer.scene}
-        scale={isMobile ? 0.7 : 0.75}
-        position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]}
-        rotation={[-0.01, -0.2, -0.1]}
-      />
-    </mesh>
-  );
-};
 const ComputersCanvas = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    // Add a listener for changes to the screen size
-    const mediaQuery = window.matchMedia("(max-width: 500px)");
-
-    // Set the initial value of the `isMobile` state variable
-    setIsMobile(mediaQuery.matches);
-
-    // Define a callback function to handle changes to the media query
-    const handleMediaQueryChange = (event) => {
-      setIsMobile(event.matches);
-    };
-
-    // Add the callback function as a listener for changes to the media query
-    mediaQuery.addEventListener("change", handleMediaQueryChange);
-
-    // Remove the listener when the component is unmounted
-    return () => {
-      mediaQuery.removeEventListener("change", handleMediaQueryChange);
-    };
-  }, []);
-
   return (
-    <Canvas
-      frameloop='demand'
-      shadows
-      dpr={[1, 2]}
-      camera={{ position: [20, 3, 5], fov: 25 }}
-      gl={{ preserveDrawingBuffer: true }}
-    >
-      <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls
-          enableZoom={false}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2}
-        />
-        <Computers isMobile={isMobile} />
-      </Suspense>
-
-      <Preload all />
-    </Canvas>
+    <div className='sketchfab-embed-wrapper'>
+      {/* Se reemplaza temporalmente el canvas Three.js por el embed de Sketchfab */}
+      {/* <iframe
+        title='Work Station For PC'
+        frameBorder='0'
+        allowFullScreen
+        mozallowfullscreen='true'
+        webkitallowfullscreen='true'
+        allow='autoplay; fullscreen; xr-spatial-tracking'
+        xr-spatial-tracking='true'
+        execution-while-out-of-viewport='true'
+        execution-while-not-rendered='true'
+        web-share='true'
+        src='https://sketchfab.com/models/2a90bd27734646cf829c3f237f41332f/embed'
+        style={{ width: "100%", height: "450px", border: 0 }}
+      />
+      <p style={{ fontSize: "13px", fontWeight: "normal", margin: "5px", color: "#4A4A4A" }}>
+        <a
+          href='https://sketchfab.com/3d-models/work-station-for-pc-2a90bd27734646cf829c3f237f41332f?utm_medium=embed&utm_campaign=share-popup&utm_content=2a90bd27734646cf829c3f237f41332f'
+          target='_blank'
+          rel='nofollow'
+          style={{ fontWeight: "bold", color: "#1CAAD9" }}
+        >
+          {" "}
+          Work Station For PC
+        </a>{" "}
+        by{" "}
+        <a
+          href='https://sketchfab.com/Serjogasan?utm_medium=embed&utm_campaign=share-popup&utm_content=2a90bd27734646cf829c3f237f41332f'
+          target='_blank'
+          rel='nofollow'
+          style={{ fontWeight: "bold", color: "#1CAAD9" }}
+        >
+          {" "}
+          Serjogasan
+        </a>{" "}
+        on{" "}
+        <a
+          href='https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=2a90bd27734646cf829c3f237f41332f'
+          target='_blank'
+          rel='nofollow'
+          style={{ fontWeight: "bold", color: "#1CAAD9" }}
+        >
+          Sketchfab
+        </a>
+      </p> */}
+    </div>
   );
 };
 

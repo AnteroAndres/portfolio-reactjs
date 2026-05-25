@@ -23,11 +23,14 @@ const ExperienceCard = ({ experience }) => {
       date={experience.date}
       iconStyle={{ background: experience.iconBg }}
       icon={
-        <div className='flex justify-center items-center w-full h-full'>
+        <div
+          className='group flex justify-center items-center w-full h-full cursor-zoom-in'
+          title='Hover to zoom'
+        >
           <img
             src={experience.icon}
             alt={experience.company_name}
-            className='w-[60%] h-[60%] object-contain'
+            className='w-[60%] h-[60%] object-contain transition-transform duration-300 ease-out group-hover:scale-[1.75]'
           />
         </div>
       }
@@ -38,7 +41,18 @@ const ExperienceCard = ({ experience }) => {
           className='text-secondary text-[16px] font-semibold'
           style={{ margin: 0 }}
         >
-          {experience.company_name}
+          {experience.company_link ? (
+            <a
+              href={experience.company_link}
+              target='_blank'
+              rel='noreferrer'
+              className='hover:text-white transition-colors duration-200 underline underline-offset-2'
+            >
+              {experience.company_name}
+            </a>
+          ) : (
+            experience.company_name
+          )}
         </p>
       </div>
 

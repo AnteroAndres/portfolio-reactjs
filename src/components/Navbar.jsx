@@ -9,6 +9,18 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  const handleNavClick = (id, title, closeMenu = false) => {
+    if (closeMenu) setToggle(false);
+    setActive(title);
+
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.location.hash = `#${id}`;
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -27,7 +39,7 @@ const Navbar = () => {
     <nav
     className={`${
       styles.paddingX
-      } w-full flex items-center py-5 fixed top-0 z-20 ${
+      } w-full flex items-center py-5 fixed top-0 z-50 ${
         scrolled ? 'bg-primary' : 'bg-transparent'
       }`}
     >
@@ -53,9 +65,16 @@ const Navbar = () => {
               className={`${
                 active === nav.title ? 'text-white' : 'text-secondary'
               } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(nav.title)}
             >
-              <a href={`#${nav.id}`}>{nav.title}</a>
+              <a
+                href={`#${nav.id}`}
+                onClick={(event) => {
+                  event.preventDefault();
+                  handleNavClick(nav.id, nav.title);
+                }}
+              >
+                {nav.title}
+              </a>
             </li>
           ))}
         </ul>
@@ -78,12 +97,16 @@ const Navbar = () => {
                   className={`font-poppins font-medium cursor-pointer text-[16px] ${
                     active === nav.title ? 'text-white' : 'text-secondary'
                   }`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(nav.title);
-                  }}
                 >
-                  <a href={`#${nav.id}`}>{nav.title}</a>
+                  <a
+                    href={`#${nav.id}`}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handleNavClick(nav.id, nav.title, true);
+                    }}
+                  >
+                    {nav.title}
+                  </a>
                 </li>
               ))}
             </ul>

@@ -37,20 +37,16 @@ const ServiceCard = ({ index, title, icon }) => (
 const About = () => {
   return (
     <>
-    <motion.div variants={textVariant()}>
+    <motion.div variants={textVariant()} className='text-center'>
       <p className={styles.sectionSubText}>Introduction</p>
       <h2 className={styles.sectionHeadText}>Overview.</h2>
     </motion.div>
-    {/* <motion.p
+    <motion.p
         variants={fadeIn("", "", 0.1, 1)}
-        className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
+        className='mt-4 mx-auto text-center text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        I am a software developer with experience in TypeScript and
-        Experience with JavaScript and frameworks such as React, Node.js and
-        Three.js. I am a quick learner and kindly collaborate with clients and colleagues to
-        create efficient, scalable, and easy-to-use solutions that solve
-        real world problems. Let's work together to bring your ideas to life!
-      </motion.p> */}
+        Software Developer with 4+ years of experience building scalable web applications and enterprise systems. Specialized in .NET, Node.js, Angular, and React, with strong knowledge of microservices, cloud architecture, and modern frontend development. Experienced in AWS services such as Lambda, S3, and API Gateway, applying Clean Architecture, CQRS, OAuth 2.0, and OWASP security best practices. Passionate about developing high-performance solutions that improve scalability, automation, and user experience.
+      </motion.p>
       {/* <div className='mt-20 flex flex-wrap gap-20' >
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
